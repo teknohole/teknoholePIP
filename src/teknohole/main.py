@@ -56,7 +56,6 @@ def api_request(endpoint):
 
     headers = {"Authorization": f"Bearer {token}"}
     url = f"{API_BASE_URL}/{endpoint}"
-    console.print(f"Mengambil data dari [cyan]{url}[/cyan]...", style="yellow")
     try:
         resp = requests.get(url, headers=headers)
         resp.raise_for_status()
