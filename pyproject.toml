@@ -3,12 +3,12 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "teknohole"
-version = "0.0.1"
+name = "teknohole-cli"
+version = "0.1.0"
 authors = [
   { name="Teknohole", email="teknohole@gmail.com" },
 ]
-description = "Package resmi dari teknohole.com"
+description = "Package CLI resmi dari teknohole.com"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
@@ -16,6 +16,13 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+dependencies = [
+    "requests",
+    "rich",
+]
 
 [project.urls]
 Homepage = "https://github.com/teknohole/teknoholePIP"
+
+[project.scripts]
+teknohole = "teknohole_cli.main:main"
