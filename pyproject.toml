@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "teknohole"
 version = "0.1.0"
 authors = [
-  { name="Teknohole", email="teknohole@gmail.com" },
+  { name="Teknohole", email="support@teknohole.com" },
 ]
 description = "Package CLI resmi dari teknohole.com"
 readme = "README.md"
@@ -19,6 +19,8 @@ classifiers = [
 dependencies = [
     "requests",
     "rich",
+    "httpx[http2]",
+    "tqdm",
 ]
 
 [project.urls]
@@ -26,3 +28,6 @@ Homepage = "https://github.com/teknohole/teknoholePIP"
 
 [project.scripts]
 teknohole = "teknohole.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
