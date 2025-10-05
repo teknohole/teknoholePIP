@@ -8,7 +8,7 @@ from rich.prompt import Prompt
 console = Console()
 
 CONFIG_PATH = os.path.expanduser("~/.teknohole/config.json")
-API_BASE_URL = "https://apingajiqu.teknohole.com/api"
+API_BASE_URL = "https://api.teknohole.com/api"
 
 def save_token(token):
     """Menyimpan token ke file konfigurasi."""
@@ -27,12 +27,12 @@ def load_token():
             return None
     return None
 
-def login(email, password):
+def login(username, password):
     """Mengirim permintaan login ke API."""
-    url = f"{API_BASE_URL}/akun/login"
+    url = f"{API_BASE_URL}/login"
     console.print("Mencoba login...", style="yellow")
     try:
-        resp = requests.post(url, json={"email": email, "password": password})
+        resp = requests.post(url, json={"username": username, "password": password})
         resp.raise_for_status()
 
         token = resp.json().get("access")
@@ -86,9 +86,9 @@ def main():
     args = parser.parse_args()
 
     if args.command == "login":
-        email = Prompt.ask("[bold cyan]Masukkan email[/bold cyan]")
-        password = Prompt.ask("[bold cyan]Masukkan password[/bold cyan]", password=True) # password=True akan menyembunyikan ketikan
-        login(email, password)
+        username = Prompt.ask("[bold cyan]Masukkan username/email[/bold cyan]")
+        password = Prompt.ask("[bold cyan]Masukkan password[/bold cyan]", password=True)
+        login(username, password)
     elif args.command == "get":
         api_request(args.endpoint)
     else:
